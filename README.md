@@ -2,7 +2,7 @@
 
 <!-- You can replace this with your own logo -->
 
-<img src="https://placehold.co/150x150/2d3748/ffffff?text=LOGO&font=inter" alt="Project Logo">
+<img src="https://placehold.co/150x150/2d3748/ffffff?text=MOF_AE&font=inter" alt="Project Logo">
 
 Unsupervised Anomaly Detection using an Autoencoder
 A deep learning approach to identify outliers in complex datasets without pre-labeled data.
