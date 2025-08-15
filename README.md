@@ -1,86 +1,88 @@
 <div align="center">
 
 <!-- You can replace this with your own logo -->
+<img src="https://placehold.co/150x150/2d3748/ffffff?text=CHEM-AD&font=inter" alt="Project Logo">
 
-<img src="https://placehold.co/150x150/2d3748/ffffff?text=MOF_AE&font=inter" alt="Project Logo">
+# Unsupervised Anomaly Detection using an Autoencoder
 
-Unsupervised Anomaly Detection using an Autoencoder
 A deep learning approach to identify outliers in complex datasets without pre-labeled data.
 
 <!-- Badges: Replace with your own links -->
+![Python 3.9+](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-[Link to the Research Paper] • [Report an Issue] • [Request a Feature]
+**[Link to the Research Paper]** 
 
 </div>
 
-📄 Abstract & Project Goal
-This repository contains the complete code and workflow for a research paper on unsupervised anomaly detection. The primary objective is to identify unusual patterns or outliers in a dataset without prior knowledge or labeled examples of what constitutes an anomaly.
+---
 
-The core of this project is an autoencoder, a type of neural network trained to reconstruct its input data. The model is trained exclusively on normal data instances. When presented with a new data point, the model's ability to reconstruct it is measured; a high reconstruction error indicates that the data point is significantly different from the training data and is therefore flagged as an anomaly. The subsequent analysis involves using dimensionality reduction techniques and various plotting methods to visualize and interpret the characteristics of the detected anomalies.
+### 📄 **Abstract & Project Goal**
 
-🚀 Workflow Pipeline
+This repository contains the complete code and workflow for a research paper on **unsupervised anomaly detection**. The primary objective is to identify unusual patterns or outliers in a dataset without prior knowledge or labeled examples of what constitutes an anomaly.
+
+The core of this project is an **autoencoder**, a type of neural network trained to reconstruct its input data. The model is trained exclusively on normal data instances. When presented with a new data point, the model's ability to reconstruct it is measured; a high **reconstruction error** indicates that the data point is significantly different from the training data and is therefore flagged as an anomaly. The subsequent analysis involves using dimensionality reduction techniques and various plotting methods to visualize and interpret the characteristics of the detected anomalies.
+
+---
+
+### 🚀 **Workflow Pipeline**
+
 The project follows a clear, sequential workflow. The notebooks are designed to be run in order, as the outputs of the initial modeling steps are the inputs for the later analysis and visualization steps.
 
-Data Input ➡️ 1. Anomaly.ipynb (Model Training & Scoring) ➡️ Generated CSV Outputs ➡️ 2. Analysis Notebooks (Visualization) ➡️ Final Figures
+**`Data Input`** ➡️ **`1. Anomaly.ipynb`** (Model Training & Scoring) ➡️ **`Generated CSV Outputs`** ➡️ **`2. Analysis Notebooks`** (Visualization) ➡️ **`Final Figures`**
 
-📂 File Descriptions & Purpose
+---
+
+### 📂 **File Descriptions & Purpose**
+
 This project is organized into several Jupyter notebooks, each with a specific role in the pipeline.
 
-Core Model File
-Anomaly.ipynb
+#### **Core Model File**
 
-Purpose: This is the main and most critical notebook. It handles the entire modeling process from start to finish.
+* `Anomaly.ipynb`
+    * **Purpose**: This is the main and most critical notebook. It handles the entire modeling process from start to finish.
+    * **Key Functions**:
+        1.  **Data Loading & Preprocessing**: Loads the raw dataset (`dataset.csv`), cleans it, and scales the features for the neural network.
+        2.  **Autoencoder Model**: Defines, compiles, and trains the autoencoder model on the processed data.
+        3.  **Anomaly Score Calculation**: Uses the trained model to predict on the dataset and calculates the reconstruction error for each data point.
+        4.  **Output Generation**: Saves the data with their corresponding anomaly scores into CSV files (`anomaly.csv`, `anomaly_all.csv`) in the `outputs/` folder. **This notebook must be run first.**
+            * `anomaly.csv`: Contains only the *averaged* anomaly scores per data point.
+            * `anomaly_all.csv`: Contains the detailed anomaly scores *across all features*.
 
-Key Functions:
+#### **Post-Modeling & Visualization Files**
 
-Data Loading & Preprocessing: Loads the raw dataset (dataset.csv), cleans it, and scales the features for the neural network.
+* `Dimention Reduction.ipynb`
+    * **Purpose**: To visualize the high-dimensional dataset in a 2D space to see if the detected anomalies form distinct clusters.
+    * **Methods**: Utilizes powerful dimensionality reduction techniques like **UMAP** or **t-SNE**.
+    * **Input**: Reads the `anomaly_all.csv` file generated by `Anomaly.ipynb`.
 
-Autoencoder Model: Defines, compiles, and trains the autoencoder model on the processed data.
+* `Plots 1.ipynb` & `Plots 2.ipynb`
+    * **Purpose**: These notebooks are dedicated to creating the specific, publication-quality figures and charts required for the research paper. They also include analysis using the **Elbow Method** to determine an optimal threshold for classifying anomalies.
+    * **Key Functions**: Generate various visualizations such as violin plots, scatter plots, and feature distributions to compare normal vs. anomalous data points.
+    * **Output**: Saves the generated figures into the `Figs/` directory.
+    * **Input**: Reads the `anomaly_all.csv` file.
 
-Anomaly Score Calculation: Uses the trained model to predict on the dataset and calculates the reconstruction error for each data point.
+---
 
-Output Generation: Saves the data with their corresponding anomaly scores into CSV files (anomaly.csv, anomaly_all.csv) in the outputs/ folder. This notebook must be run first.
+### ⚙️ **How to Run the Project**
 
-anomaly.csv: Contains only the averaged anomaly scores per data point.
-
-anomaly_all.csv: Contains the detailed anomaly scores across all features.
-
-Post-Modeling & Visualization Files
-Dimention Reduction.ipynb
-
-Purpose: To visualize the high-dimensional dataset in a 2D space to see if the detected anomalies form distinct clusters.
-
-Methods: Utilizes powerful dimensionality reduction techniques like UMAP or t-SNE.
-
-Input: Reads the anomaly_all.csv file generated by Anomaly.ipynb.
-
-Plots 1.ipynb & Plots 2.ipynb
-
-Purpose: These notebooks are dedicated to creating the specific, publication-quality figures and charts required for the research paper. They also include analysis using the Elbow Method to determine an optimal threshold for classifying anomalies.
-
-Key Functions: Generate various visualizations such as violin plots, scatter plots, and feature distributions to compare normal vs. anomalous data points.
-
-Output: Saves the generated figures into the Figs/ directory.
-
-Input: Reads the anomaly_all.csv file.
-
-⚙️ How to Run the Project
 To reproduce the results, follow these steps in order:
 
-Clone the Repository
+1.  **Clone the Repository**
+    ```bash
+    git clone [[https://github.com/your-username/your-repository-name.git](https://github.com/alimardani76/Anomaly_Detection_MOF)](https://[github.com/your-username/your-repository-name.git](https://github.com/alimardani76/Anomaly_Detection_MOF))
+    cd your-repository-name
+    ```
 
-git clone https://github.com/your-username/your-repository-name.git
-cd your-repository-name
+2.  **Install Dependencies**
+    Ensure you have the required libraries installed.
+    ```bash
+    pip install pandas numpy tensorflow scikit-learn matplotlib seaborn umap-learn jupyter
+    ```
 
-Install Dependencies
-Ensure you have the required libraries installed.
+3.  **Run the Main Model**:
+    * Open and run all cells in `Anomaly.ipynb`. This will train the model and create the necessary `anomaly_all.csv` file in the `outputs` folder.
 
-pip install pandas numpy tensorflow scikit-learn matplotlib seaborn umap-learn jupyter
-
-Run the Main Model:
-
-Open and run all cells in Anomaly.ipynb. This will train the model and create the necessary anomaly_all.csv file in the outputs folder.
-
-Run the Analysis & Plotting Notebooks:
-
-Once Step 1 is complete, you can run Dimention Reduction.ipynb, Plots 1.ipynb, and Plots 2.ipynb in any order to generate the figures for the paper.
+4.  **Run the Analysis & Plotting Notebooks**:
+    * Once Step 1 is complete, you can run `Dimention Reduction.ipynb`, `Plots 1.ipynb`, and `Plots 2.ipynb` in any order to generate the figures for the paper.
