@@ -71,8 +71,8 @@ To reproduce the results, follow these steps in order:
 
 1.  **Clone the Repository**
     ```bash
-    git clone [[https://github.com/your-username/your-repository-name.git](https://github.com/alimardani76/Anomaly_Detection_MOF)](https://[github.com/your-username/your-repository-name.git](https://github.com/alimardani76/Anomaly_Detection_MOF))
-    cd your-repository-name
+    git clone https://github.com/alimardani76/Anomaly_Detection_CHEM_AD
+    cd Anomaly_Detection_CHEM_AD
     ```
 
 2.  **Install Dependencies**
@@ -86,3 +86,72 @@ To reproduce the results, follow these steps in order:
 
 4.  **Run the Analysis & Plotting Notebooks**:
     * Once Step 1 is complete, you can run `Dimention Reduction.ipynb`, `Plots 1.ipynb`, and `Plots 2.ipynb` in any order to generate the figures for the paper.
+  
+# Feature Extraction Scripts for Anomaly Detection
+
+This folder contains the Python scripts used for the initial feature extraction, which is a necessary pre-processing step for the main anomaly detection analysis. These scripts process raw Metal-Organic Framework (MOF) structural files (`.cif` and `.json`) to generate a comprehensive set of geometric, chemical, and topological features.
+
+The final output is a `.csv` file, which serves as the input dataset for the anomaly detection model. The pipeline is designed to work with large datasets like the **CoRE MOF 2019** and **hMOF** databases.
+
+## 🔬 Features Extracted
+
+This pipeline extracts over 50 features, categorized as follows:
+
+* **Geometric:** Surface area, void fraction, pore limiting diameter (PLD), and largest cavity diameter (LCD).
+* **Chemical:** Density, formula, elemental properties (e.g., average electronegativity), metal fractions, and one-hot encoding of common metals.
+* **Topological:** Graph-based properties describing the MOF's connectivity, such as graph density, diameter, average shortest path length, and clustering coefficients.
+* **Linker & Metal:** Properties specific to the organic linkers and metal centers, such as average bond lengths and metal coordination numbers.
+
+## 🚀 Workflow & How to Use
+
+The data processing is broken down into a sequence of scripts. You should run them in order, as each script's output may be the input for the next one.
+
+### **Prerequisites**
+
+Make sure you have the required Python libraries installed:
+
+```
+pip install pandas pymatgen networkx tqdm
+```
+
+You will also need to have your raw MOF dataset folders (e.g., `CoREMOF 2019`, `hMOF-10_CO2_CH4_N2`) in the same directory as these scripts.
+
+### **Step-by-Step Instructions**
+
+1.  **Prepare the Dataset (`01_prepare_dataset.py`)**
+    * **What it does:** Finds all `.cif` files in your raw dataset folders, matches them with their corresponding `.json` files, and copies them into a clean project directory (`MOFxDB_Project`).
+    * **How to run:**
+        ```
+        python 01_prepare_dataset.py
+        ```
+
+2.  **Extract Geometric Features (`02_extract_geometric_features.py`)**
+    * **What it does:** Reads the `.json` files to extract pre-calculated geometric properties.
+    * **How to run:**
+        ```
+        python 02_extract_geometric_features.py
+        ```
+
+3.  **Extract Chemical Features (`03_extract_chemical_features.py`)**
+    * **What it does:** Analyzes the `.cif` files to calculate a wide range of chemical and compositional properties. This script processes the full CoRE MOF set and a 15k subset of hMOFs.
+    * **How to run:**
+        ```
+        python 03_extract_chemical_features.py
+        ```
+
+4.  **Extract Topological Features (`04_extract_topological_features.py`)**
+    * **What it does:** Treats each MOF as a mathematical graph to calculate features describing its connectivity and topology.
+    * **How to run:**
+        ```
+        python 04_extract_topological_features.py
+        ```
+
+5.  **Extract Linker & Metal Features (`05_extract_linker_metal_features.py`)**
+    * **What it does:** Calculates features specific to the organic linkers and metal nodes within the MOF structures.
+    * **How to run:**
+        ```
+        python 05_extract_linker_metal_features.py
+        ```
+
+After running all the scripts, your extracted features will be located in the `MOFxDB_Project/features/` directory, ready for your analysis!
+
