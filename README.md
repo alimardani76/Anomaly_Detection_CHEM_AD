@@ -1,4 +1,4 @@
-# Anomaly Detection in Metal-Organic Frameworks (MOFs)
+# CHEM-AD Anomaly Detection in Metal-Organic Frameworks (MOFs)
 
 > This repository contains a comprehensive methodology for anomaly detection in MOF structures using autoencoders. The project includes a full hyperparameter search, feature justification, model validation, and visualization of results.
 
