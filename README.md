@@ -60,6 +60,6 @@ The key finding is that despite varying depths and architectures, all models sho
 
 ## Results & Visualizations
 
-The `Dimension Reduction Visualizations` folder contains the final visualization plots from various dimension reduction techniques, including **PCA**, **t-SNE**, and **UMAP**.
+The `Dimension Reduction` ,  folders contains the visualizations including various dimension reduction techniques, including **PCA**, **t-SNE**, and **UMAP**. All plots are colored by MOF category (anomaly vs. non-anomaly) to visualize cluster separation. Additionally, the PCA plots include versions that specifically mark and highlight the top 10 most anomalous MOFs identified by the models.
+The `Results` , `Figures` contain pairwise correlation heatmap, feature anomaly contribution, feature distribution (anomaly vs normal MoFs).
 
-All plots are colored by MOF category (anomaly vs. non-anomaly) to visualize cluster separation. Additionally, the PCA plots include versions that specifically mark and highlight the top 10 most anomalous MOFs identified by the models.
