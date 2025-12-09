@@ -65,7 +65,7 @@ The `Results` , `Figures` contain pairwise correlation heatmap, feature anomaly 
 
 
 
-# 🔬🔬🔬 MOF Feature Extractor for Machine Learning 🔬🔬🔬
+# 🔬 MOF Feature Extractor for Machine Learning 🔬
 
 This project provides a set of Python scripts to extract a comprehensive set of geometric, chemical, and topological features from Metal-Organic Framework (MOF) structural files (`.cif` and `.json`). The resulting feature sets are saved as `.csv` files, ready for use in machine learning models to predict MOF properties.
 
@@ -94,7 +94,7 @@ pip install pandas pymatgen networkx tqdm
 
 You will also need to have your raw MOF dataset folders (e.g., `CoREMOF 2019`, `hMOF-10_CO2_CH4_N2`) in the same directory as these scripts.
 
-### **Step-by-Step Instructions**
+### **Step-by-Step Instructions(Feature_extraction Folder)**
 
 1.  **Prepare the Dataset (`01_prepare_dataset.py`)**
     * **What it does:** Finds all `.cif` files in your raw dataset folders, matches them with their corresponding `.json` files, and copies them into a clean project directory (`MOFxDB_Project`).
