@@ -1,3 +1,5 @@
+<img width="1645" height="1536" alt="Gemini_Generated_Image_xbqbmfxbqbmfxbqb" src="https://github.com/user-attachments/assets/b9d7c932-c730-4c44-943d-6f848c926ec5" />
+
 # 🔬 CHEM-AD: Deep Learning-Driven Anomaly Detection for Metal-Organic Frameworks
 
 **CHEM-AD** is a comprehensive computational framework for identifying structural and chemical anomalies in Metal-Organic Framework (MOF) databases. By utilizing deep autoencoders, the project provides a systematic way to detect "outlier" materials—whether they are physical anomalies (unstable/erroneous structures) or chemical anomalies (materials with unique, high-value properties).
